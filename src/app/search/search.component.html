@@ -1,0 +1,29 @@
+<div *ngIf="state$ | async as state" fxLayoutAlign="center start"> 
+    
+    <mat-card fxFlex="70" class="search-card">
+        <mat-card-header>
+            <mat-card-title>Station search</mat-card-title>
+        </mat-card-header> 
+        <mat-card-content> 
+            <app-search-header 
+                [queryString]="state.queryString"
+                (clearQuery)="clearQuery()">
+            </app-search-header>
+            <app-search-keyboard 
+                (keySelect)="keySelect($event)"
+                (backspaceSelect)="backspaceSelect()">
+            </app-search-keyboard>
+        </mat-card-content>
+    </mat-card>
+
+  <mat-card fxFlex class="search-card">
+    <mat-card-content>
+      <app-search-list 
+        [list]="state.stations" 
+        (stationSelect)="stationSelect($event)">
+      </app-search-list>
+    </mat-card-content>
+  </mat-card>
+  <!-- <app-loading *ngIf="state.loading"></app-loading> -->
+  <app-error-info  [message]="state.error"></app-error-info>
+</div>

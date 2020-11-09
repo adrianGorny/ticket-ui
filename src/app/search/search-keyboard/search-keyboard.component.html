@@ -1,0 +1,28 @@
+<div>
+  <div *ngFor="let row of keyboardLayout" class="keyboard" fxLayout="collumn">
+    <div *ngFor="let key of row" fxLayout="row" class="keyboard__row">
+        <button 
+        (click)="onKeySelect(key)"
+        class="keyboard__key"
+        mat-raised-button
+        color="primary">
+        {{key}}
+        </button>
+    </div>
+  </div>
+  <div fxLayout="row">
+        <button 
+        (click)="onKeySelect(' ')"
+        class="space__key"
+        mat-raised-button
+        color="primary">
+        </button> 
+        <button 
+        (click)="onBackspaceSelect()"
+        class="backspace__key"
+        mat-raised-button
+        color="warning">
+            <mat-icon aria-hidden="false" aria-label="backspace">backspace</mat-icon>
+        </button>
+  </div>
+</div>

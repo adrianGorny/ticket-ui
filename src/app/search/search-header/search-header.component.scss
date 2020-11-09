@@ -1,0 +1,14 @@
+@import 'src/assets/styles/variables.scss';
+
+.search-header {
+  width: 100%;
+  &__input-wrapper {
+    width: 100%;
+  }
+  &__clear-button {
+    font-size: $font-size-M;
+    margin-left: $spacing-M;
+    color: white;
+    min-width: 0;
+  }
+}

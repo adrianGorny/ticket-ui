@@ -1,0 +1,12 @@
+@import 'src/assets/styles/variables.scss';
+
+.main-header {
+  top: 0;
+  position: fixed;
+  height: $header-height;
+  z-index: 100;
+  &__icon {
+    font-size: $font-size-L;
+    margin-right: $spacing-XM;
+  }
+}

@@ -1,0 +1,10 @@
+.data-table {
+    width: 100%;
+    min-height: 200px;
+    .mat-sort-header-container {
+        align-items: center;
+    }
+    tr:hover {
+        background: #f6f6f6;
+    }
+}

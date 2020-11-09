@@ -1,0 +1,17 @@
+@import 'src/assets/styles/variables.scss';
+
+.keyboard {
+    &:nth-child(n+2){
+        margin-left: $spacing-M;
+    }
+    &:nth-child(n+3){
+        margin-left: $spacing-L;
+    } 
+    &__row {
+        margin-bottom: $spacing-M;
+    }
+    &__key {
+        margin-right: $spacing-S;
+    }
+}
+
