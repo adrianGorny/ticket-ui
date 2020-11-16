@@ -1,4 +1,10 @@
-import { Component, Output, EventEmitter, ChangeDetectionStrategy, Input } from '@angular/core';
+import {
+  Component,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+  Input
+} from '@angular/core';
 
 @Component({
   selector: 'app-search-header',

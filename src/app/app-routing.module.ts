@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('@search/search.module').then(m => m.SearchModule)
   },
   {
-    path: AppRoutes.OVERVIEW,
+    path: `${AppRoutes.OVERVIEW}/:code`,
     component: OverviewComponent
   },
   {

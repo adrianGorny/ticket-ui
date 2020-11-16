@@ -1,13 +1,6 @@
-<div *ngIf="!!message" class="error-box">
-  <div class="error-box__icon">
-    <mat-icon class="icon-times">
-      times
-    </mat-icon>
-    <mat-icon class="icon-search">
-      search
-    </mat-icon>
-  </div>
-  <div class="error-box__text">
+<div *ngIf="!!message" class="error-box" fxLayout="row" fxFlexAlign="start center" >
+  <mat-icon fxFlex="10" color="warn">warning</mat-icon>
+  <div fxFlex class="error-box__text">
     {{message}}
   </div>
 </div>

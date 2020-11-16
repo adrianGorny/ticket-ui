@@ -1,6 +1,6 @@
 <div *ngIf="state$ | async as state" fxLayoutAlign="center start"> 
     
-    <mat-card fxFlex="70" class="search-card">
+    <mat-card fxFlex="60" class="search-card">
         <mat-card-header>
             <mat-card-title>Station search</mat-card-title>
         </mat-card-header> 
@@ -10,20 +10,32 @@
                 (clearQuery)="clearQuery()">
             </app-search-header>
             <app-search-keyboard 
+                [availableKeys]="state.availableKeys"
                 (keySelect)="keySelect($event)"
                 (backspaceSelect)="backspaceSelect()">
             </app-search-keyboard>
+            <div class="search-card__footer" fxLayoutAlign="center center"> 
+                <div fxFlex>
+                    <app-loading fxFlex *ngIf="state.loading"></app-loading>
+                    <app-error-info [message]="state.error"></app-error-info>
+                </div>
+                <button fxFlex="20" 
+                    [disabled]="!state.selectedStation"
+                    mat-stroked-button 
+                    (click)="navigateToNextPage(state.selectedStation)"
+                    color="primary">
+                    Next
+                </button>
+            </div>
         </mat-card-content>
     </mat-card>
 
-  <mat-card fxFlex class="search-card">
-    <mat-card-content>
-      <app-search-list 
-        [list]="state.stations" 
-        (stationSelect)="stationSelect($event)">
-      </app-search-list>
-    </mat-card-content>
-  </mat-card>
-  <!-- <app-loading *ngIf="state.loading"></app-loading> -->
-  <app-error-info  [message]="state.error"></app-error-info>
+    <mat-card fxFlex class="search-card">
+        <mat-card-content>
+        <app-search-list 
+            [list]="state.stations" 
+            (stationSelect)="stationSelect($event)">
+        </app-search-list>
+        </mat-card-content>
+    </mat-card>
 </div>

@@ -1,6 +1,10 @@
+.table-container {
+    min-height: 100px;
+    max-height: 600px;
+    overflow: auto;
+}
 .data-table {
     width: 100%;
-    min-height: 200px;
     .mat-sort-header-container {
         align-items: center;
     }

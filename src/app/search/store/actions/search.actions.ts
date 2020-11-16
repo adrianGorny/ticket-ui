@@ -8,6 +8,7 @@ export enum SearchActionTypes {
   Clear = '[Search]:Clear',
   SelectStation = '[Search]:SelectStation',
   LoadSuccess = '[Search]:LoadSuccess',
+  SetAvailableKeys = '[Search]:SetAvailableKeys',
   LoadError = '[Search]:LoadError'
 }
 
@@ -23,6 +24,10 @@ export const loadSuccessAction = createAction(
   SearchActionTypes.LoadSuccess,
   props<{ stations: Station[] }>()
 );
+export const setAvailableKeysAction = createAction(
+  SearchActionTypes.SetAvailableKeys,
+  props<{ availableKeys: string[] }>()
+);
 export const loadErrorAction = createAction(
   SearchActionTypes.LoadError,
   props<{ error: string }>()
@@ -35,6 +40,7 @@ const actionUnion = union({
   clearAction,
   selectStationAction,
   loadSuccessAction,
+  setAvailableKeysAction,
   loadErrorAction
 });
 

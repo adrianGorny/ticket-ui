@@ -1,6 +1,7 @@
 @import 'src/assets/styles/variables.scss';
 
 .keyboard {
+    margin: $spacing-S 0;
     &:nth-child(n+2){
         margin-left: $spacing-M;
     }
@@ -8,10 +9,18 @@
         margin-left: $spacing-L;
     } 
     &__row {
-        margin-bottom: $spacing-M;
+        margin-bottom: $spacing-S;
     }
     &__key {
-        margin-right: $spacing-S;
+        margin-right: $spacing-XM;
+        opacity: .8;
+        &--space {
+            margin-left: $spacing-XXL;
+            padding: 0 $spacing-XXL; 
+        } 
+        &--available {
+            opacity: 1;
+        }
     }
 }
 

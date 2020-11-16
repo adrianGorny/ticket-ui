@@ -6,7 +6,8 @@ import {
   loadErrorAction,
   loadSuccessAction,
   SearchActions,
-  selectStationAction
+  selectStationAction,
+  setAvailableKeysAction
 } from '@search/store/actions/search.actions';
 
 export const searchFeatureKey = 'searchFeature';
@@ -14,6 +15,7 @@ export const searchFeatureKey = 'searchFeature';
 export interface SearchState {
   stations: Station[];
   selectedStation: Station;
+  availableKeys: string[];
   loading: boolean;
   queryString: string;
   error: string;
@@ -22,6 +24,7 @@ export interface SearchState {
 export const initialState: SearchState = {
   stations: [],
   selectedStation: null,
+  availableKeys: null,
   loading: false,
   queryString: '',
   error: null
@@ -33,6 +36,7 @@ export function searchReducer(searchState: SearchState, searchActions: SearchAct
     on(loadAction, (state, { queryString }) => ({
       ...state,
       loading: true,
+      availableKeys: null,
       queryString
     })),
     on(clearAction, () => ({ ...initialState })),
@@ -45,6 +49,10 @@ export function searchReducer(searchState: SearchState, searchActions: SearchAct
       selectedStation: null,
       loading: false,
       stations
+    })),
+    on(setAvailableKeysAction, (state, { availableKeys }) => ({
+      ...state,
+      availableKeys
     })),
     on(loadErrorAction, (state, { error }) => ({ ...state, loading: false, error }))
   )(searchState, searchActions);

@@ -1,4 +1,4 @@
-import { clearAction } from './../actions/search.actions';
+import { clearAction, setAvailableKeysAction } from './../actions/search.actions';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SearchRestapiService } from '@core/restapi/search';
@@ -43,6 +43,19 @@ export class SearchEffects {
         catchError((error: HttpErrorResponse) => of(loadErrorAction({ error: error.message })))
       )
     )
+  );
+
+  @Effect()
+  loadSuccess$ = this.actions$.pipe(
+    ofType(SearchActionTypes.LoadSuccess),
+    withLatestFrom(this.store.select(queryStringSelector)),
+    map(([{ stations }, queryString]) => {
+      const letterIndex = queryString.length;
+      const nextLetters = stations
+        .map(station => station.stationName)
+        .map(name => (name.length > letterIndex ? name.charAt(letterIndex).toUpperCase() : ''));
+      return setAvailableKeysAction({ availableKeys: [...new Set(nextLetters)] });
+    })
   );
 
   constructor(

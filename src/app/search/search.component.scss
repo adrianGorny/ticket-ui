@@ -2,4 +2,7 @@
 
 .search-card {
     margin: $spacing-M;
+    &__footer {
+        min-height: $spacing-XXL;
+    }
 }
